@@ -3,104 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
-    <!-- ลิงก์ไปยัง Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- ลิงก์ไปยัง CSS -->
     <link rel="stylesheet" href="styles.css">
+    <title>ระบบจัดการครัวอีสาน</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="#">Menu</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#food" onclick="showMenu('food')">Food</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#desserts" onclick="showMenu('desserts')">Desserts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#drinks" onclick="showMenu('drinks')">Drinks</a></li>
-                </ul>
-            </div>
-        </div>
+    <nav>
+        <a href="#food" onclick="showMenu('food')">อาหาร</a>
+        <a href="#desserts" onclick="showMenu('desserts')">ของหวาน</a>
+        <a href="#drinks" onclick="showMenu('drinks')">เครื่องดื่ม</a>
     </nav>
 
-    <div class="container mt-4">
-        <div class="alert alert-warning text-center promotion-banner">
-            🔥 Special Offer: Get 10% off on orders above ฿500! 🔥
-        </div>
-
-        <h1 class="text-center text-primary mb-4">Restaurant Menu</h1>
-        <div class="mb-3">
-            <input type="text" id="search-bar" class="form-control" placeholder="Search menu..." onkeyup="searchMenu()">
-        </div>
-        <div class="mb-3">
-            <select id="filter" class="form-select" onchange="filterMenu()">
-                <option value="all">All</option>
-                <option value="below100">Below ฿100</option>
-                <option value="above100">Above ฿100</option>
-            </select>
-        </div>
-
-        <!-- Food Section -->
-        <div id="food" class="menu row">
-            <div class="menu-item col-md-4">
-                <div class="card">
-                    <img src="images/muffin-burger.jpg" class="card-img-top" alt="Muffin Burger">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Muffin Burger</h5>
-                        <p class="price text-primary">฿90.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Muffin Burger', 90)">Add to Cart</button>
-                    </div>
+    <div class="container" id="menu-container">
+        <h1>ครัวอีสาน ปากหมา</h1>
+        <div id="food" class="menu">
+            <!-- เนื้อย่าง -->
+            <div class="menu-item">
+                <img src="images/เนื้อย่าง.jpg" alt="เนื้อย่าง">
+                <div class="menu-item-details">
+                    <h3>เนื้อย่าง</h3>
+                    <p class="price">฿30.00</p>
+                    <button onclick="addToCart('เนื้อย่าง', 30)">Add to Cart</button>
                 </div>
             </div>
-            <div class="menu-item col-md-4">
-                <div class="card">
-                    <img src="images/fish-n-chips.jpg" class="card-img-top" alt="Fish N Chips">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Fish N Chips</h5>
-                        <p class="price text-primary">฿229.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Fish N Chips', 229)">Add to Cart</button>
-                    </div>
+    
+            <!-- ไก่ย่าง -->
+            <div class="menu-item">
+                <img src="images/ไก่ย่าง.jpg" alt="ไก่ย่าง">
+                <div class="menu-item-details">
+                    <h3>ไก่ย่าง</h3>
+                    <p class="price">฿30.00</p>
+                    <button onclick="addToCart('ไก่ย่าง', 30)">Add to Cart</button>
                 </div>
             </div>
-        </div>
-
-        <!-- Desserts Section -->
-        <div id="desserts" class="menu row d-none">
-            <div class="menu-item col-md-4">
-                <div class="card">
-                    <img src="images/chocolate-cake.jpg" class="card-img-top" alt="Chocolate Cake">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Chocolate Cake</h5>
-                        <p class="price text-primary">฿120.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Chocolate Cake', 120)">Add to Cart</button>
-                    </div>
+    
+            <!-- ส้มตำ -->
+            <div class="menu-item">
+                <img src="images/ส้มตำ.jpg" alt="ส้มตำ">
+                <div class="menu-item-details">
+                    <h3>ส้มตำ</h3>
+                    <p class="price">฿40.00</p>
+                    <button onclick="addToCart('ส้มตำ', 40)">Add to Cart</button>
+                </div>
+            </div>
+    
+            <!-- ยำวุ้นเส้น -->
+            <div class="menu-item">
+                <img src="images/ยำวุ้นเส้น.jpg" alt="ยำวุ้นเส้น">
+                <div class="menu-item-details">
+                    <h3>ยำวุ้นเส้น</h3>
+                    <p class="price">฿40.00</p>
+                    <button onclick="addToCart('ยำวุ้นเส้น', 40)">Add to Cart</button>
                 </div>
             </div>
         </div>
+    </div>
+    
 
-        <!-- Drinks Section -->
-        <div id="drinks" class="menu row d-none">
-            <div class="menu-item col-md-4">
-                <div class="card">
-                    <img src="images/cola.jpg" class="card-img-top" alt="Cola">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Cola</h5>
-                        <p class="price text-primary">฿25.00</p>
-                        <button class="btn btn-primary" onclick="addToCart('Cola', 25)">Add to Cart</button>
-                    </div>
+        <div id="desserts" class="menu" style="display: none;">
+            <div class="menu-item">
+                <img src="images/ขนมปังปิ้ง.jpg" alt="ขนมปังปิ้ง">
+                <div class="menu-item-details">
+                    <h3>ขนมปังปิ้ง</h3>
+                    <p class="price">฿25.00</p>
+                    <button onclick="addToCart('ขนมปังปิ้ง', 25)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="images/โรตี.jpg" alt="โรตี">
+                <div class="menu-item-details">
+                    <h3>โรตี</h3>
+                    <p class="price">฿25.00</p>
+                    <button onclick="addToCart('โรตี', 25)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="drinks" class="menu" style="display: none;">
+            <div class="menu-item">
+                <img src="https://via.placeholder.com/150" alt="Soda Drink">
+                <div class="menu-item-details">
+                    <h3>Soda Drink</h3>
+                    <p class="price">฿30.00</p>
+                    <button onclick="addToCart('Soda Drink', 30)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://via.placeholder.com/150" alt="Cola">
+                <div class="menu-item-details">
+                    <h3>Cola</h3>
+                    <p class="price">฿25.00</p>
+                    <button onclick="addToCart('Cola', 25)">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="cart bg-primary text-white fixed-bottom p-3 d-flex justify-content-between">
+    <div class="cart">
         <div class="cart-details">0 items in cart</div>
         <div class="cart-total">฿0.00</div>
+        <div class="cart-actions">
+            <button onclick="removeFromCart()">Remove Last Item</button>
+            <button onclick="clearCart()">Clear Cart</button>
+        </div>
     </div>
 
-    <!-- ลิงก์ไปยัง Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- ลิงก์ไปยัง Script -->
+    <script>
+
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
